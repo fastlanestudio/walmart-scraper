@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Environment secrets
+.env
+.env.local
+.secrets/
+*.pem
+*.key
+
+# Test and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local databases and runtime data
+data/*.db
+data/*.json
+logs/*.log
+logs/*.log.jsonl
+*.png
+
+# Playwright
+.playwright/

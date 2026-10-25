@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  walmart-scraper-web:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    container_name: walmart-scraper-dashboard
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - PROXY_HOST=${PROXY_HOST:-}
+      - PROXY_PORT=${PROXY_PORT:-}
+      - PROXY_USER=${PROXY_USER:-}
+      - PROXY_PASS=${PROXY_PASS:-}
+      - WALMART_CONSUMER_ID=${WALMART_CONSUMER_ID:-}
+      - WALMART_API_KEY=${WALMART_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: ["python", "app.py", "--host", "0.0.0.0", "--port", "8000"]
+    restart: unless-stopped
